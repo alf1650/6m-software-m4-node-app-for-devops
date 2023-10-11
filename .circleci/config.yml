@@ -60,3 +60,7 @@ workflows:
       - build-and-push:
           requires:
             - test
+      - deploy:
+          requires:
+            - build-and-push
+            
