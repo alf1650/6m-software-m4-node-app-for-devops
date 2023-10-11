@@ -47,8 +47,8 @@ jobs:
           name: Heroku Container Push
           command: |
             heroku container:login
-            heroku container:push web -a node-app-for-devops
-            heroku container:release web -a node-app-for-devops
+            heroku container:push web -a alf1650
+            heroku container:release web -a alf1650
 
 workflows:
   simple_workflow:
@@ -63,4 +63,4 @@ workflows:
       - deploy:
           requires:
             - build-and-push
-            
+
