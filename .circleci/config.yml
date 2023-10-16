@@ -38,18 +38,18 @@ jobs:
       - docker/push:
           image: alf1650/education-space
           tag: 1.0.1
-    scan:
-      docker: 
-        - image: cimg/node:16.10
-      environment:
-        IMAGE_NAME: alf1650/education-space
-      steps: 
-        - checkout
-        - setup_remote_docker
-        - docker/check
-        - run: docker build -t $IMAGE_NAME .
-        - synk/scan: 
-          docker-image-name: $IMAGE_NAME
+  scan:
+    docker: 
+      - image: cimg/node:16.10
+    environment:
+      IMAGE_NAME: alf1650/education-space
+    steps: 
+      - checkout
+      - setup_remote_docker
+      - docker/check
+      - run: docker build -t $IMAGE_NAME .
+      - synk/scan: 
+        docker-image-name: $IMAGE_NAME
 
   # deploy:
   #   docker:
@@ -81,4 +81,4 @@ workflows:
       - scan:
           requires:
             - build
-            
+
