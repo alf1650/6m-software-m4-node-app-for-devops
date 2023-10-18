@@ -86,7 +86,7 @@ jobs:
 workflows: 
   simple_workflow:
     jobs:
-      - versions
+      - simple_workflow
       - build:
           filters:
             branches:
