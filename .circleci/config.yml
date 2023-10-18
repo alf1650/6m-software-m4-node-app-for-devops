@@ -82,9 +82,11 @@ jobs:
 #           requires:
 #             - build
 
+
 workflows: 
   simple_workflow:
     jobs:
+      - versions
       - build:
           filters:
             branches:
