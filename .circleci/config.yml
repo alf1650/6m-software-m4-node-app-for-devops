@@ -34,10 +34,10 @@ jobs:
       - docker/check
       - docker/build:
           image: alf1650/education-space
-          tag: 1.0.1
+          tag: <<pipeline.git.tag>>
       - docker/push:
           image: alf1650/education-space
-          tag: 1.0.1
+          tag: <<pipeline.git.tag>>
   scan:
     docker: 
       - image: cimg/node:16.10
