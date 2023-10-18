@@ -65,40 +65,39 @@ jobs:
   #           heroku container:push web -a alf1650
   #           heroku container:release web -a alf1650
 
-# workflows:
-#   simple_workflow:
-#     jobs:
-#       - build
-#       - test:
-#           requires:
-#             - build
-#       - build-and-push:
-#           requires:
-#             - test
-#       # - deploy:
-#       #     requires:
-#       #       - build-and-push
-#       - scan:
-#           requires:
-#             - build
+workflows:
+  simple_workflow:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - build-and-push:
+          requires:
+            - test
+      # - deploy:
+      #     requires:
+      #       - build-and-push
+      - scan:
+          requires:
+            - build
 
-  workflows: 
-    simple_workflow:
-      jobs:
-        - build:
-            filters:
-              branches:
-                only: main
-        - test: 
-            requires:
-              - build
-            filters:
-              branches:
-                only: main
-        - build-and-push: #This should run only if a tag is pushed, not if a branch is pushed
-            filters:
-              tags:
-                only: /^v.*/ #only considers tags starting with v (ex. v1.0.2)
-              branches:
-                ignore: /.*/ #ignores all branches
-
+  # workflows: 
+  #   simple_workflow:
+  #     jobs:
+  #       - build:
+  #           filters:
+  #             branches:
+  #               only: main
+  #       - test: 
+  #           requires:
+  #             - build
+  #           filters:
+  #             branches:
+  #               only: main
+  #       - build-and-push: #This should run only if a tag is pushed, not if a branch is pushed
+  #           filters:
+  #             tags:
+  #               only: /^v.*/ #only considers tags starting with v (ex. v1.0.2)
+  #             branches:
+  #               ignore: /.*/ #ignores all branches
